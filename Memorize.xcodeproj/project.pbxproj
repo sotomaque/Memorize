@@ -36,6 +36,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		340E67DC26FBA82A00AB2F2B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				34302F3426FAF08E003D8D48 /* MemoryGame.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		340E67DD26FBA83000AB2F2B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				34302F3626FAF1D5003D8D48 /* EmojiMemoryGame.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		340E67DE26FBA83600AB2F2B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				34302F2826FABDEA003D8D48 /* ContentView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		34302F1A26FABDEA003D8D48 = {
 			isa = PBXGroup;
 			children = (
@@ -55,10 +79,10 @@
 		34302F2526FABDEA003D8D48 /* Memorize */ = {
 			isa = PBXGroup;
 			children = (
+				340E67DE26FBA83600AB2F2B /* View */,
+				340E67DD26FBA83000AB2F2B /* ViewModel */,
+				340E67DC26FBA82A00AB2F2B /* Model */,
 				34302F2626FABDEA003D8D48 /* MemorizeApp.swift */,
-				34302F2826FABDEA003D8D48 /* ContentView.swift */,
-				34302F3426FAF08E003D8D48 /* MemoryGame.swift */,
-				34302F3626FAF1D5003D8D48 /* EmojiMemoryGame.swift */,
 				34302F2A26FABDEC003D8D48 /* Assets.xcassets */,
 				34302F2C26FABDEC003D8D48 /* Preview Content */,
 			);
