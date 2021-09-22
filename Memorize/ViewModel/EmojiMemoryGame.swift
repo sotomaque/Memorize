@@ -19,7 +19,7 @@ class EmojiMemoryGame: ObservableObject {
 
     // keywork published will automatically do
     // objectWillChange.send() anytime this var changes
-    @Published private var model: MemoryGame<String> = createMemoryGame()
+    @Published private var model = createMemoryGame()
     
     var cards: Array<Card> {
         model.cards
