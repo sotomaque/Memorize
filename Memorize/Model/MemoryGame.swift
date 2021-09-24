@@ -28,6 +28,7 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
         }
     }
     
+    // game logic
     mutating func choose(_ card: Card) {
         if let chosenIndex = cards.firstIndex(where: {$0.id == card.id}),
            !cards[chosenIndex].isFaceUp,
@@ -45,6 +46,7 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
         }
     }
     
+    // returns index of provided card || nil
     func index(of card: Card) -> Int? {
         for index in 0..<cards.count {
             if cards[index].id == card.id {
@@ -54,18 +56,12 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
         return nil
     }
     
-    
+    // Card Struct
     struct Card: Identifiable {
         var isFaceUp = false
         var isMatched = false
         let content: CardContent
         let id: Int
-    }
-}
-
-struct MemoryGame_Previews: PreviewProvider {
-    static var previews: some View {
-        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
     }
 }
 
