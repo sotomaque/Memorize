@@ -45,24 +45,16 @@ struct CardView: View {
     var body: some View {
         GeometryReader(content: { geometry in
             ZStack {
-                let shape = RoundedRectangle(cornerRadius: DrawingConstants.cornerRadius)
-                
-                if card.isFaceUp {
-                    shape.fill().foregroundColor(.white)
-                    shape.strokeBorder(lineWidth: DrawingConstants.lineWidth)
-                    Pie(
-                        startAngle: Angle(degrees: 0-90),
-                        endAngle: Angle(degrees: 50-90)
-                    )
-                        .padding(DrawingConstants.piePadding)
-                        .opacity(DrawingConstants.pieOpacity)
-                    Text(card.content).font(font(in: geometry.size))
-                } else if card.isMatched {
-                    shape.opacity(0)
-                } else {
-                    shape.fill()
-                }
+                Pie(
+                    startAngle: Angle(degrees: 0-90),
+                    endAngle: Angle(degrees: 50-90)
+                )
+                    .padding(DrawingConstants.piePadding)
+                    .opacity(DrawingConstants.pieOpacity)
+                Text(card.content)
+                    .font(font(in: geometry.size))
             }
+            .cardify(isFaceUp: card.isFaceUp)
         })
     }
     
@@ -73,8 +65,6 @@ struct CardView: View {
     
     // CONSTANTS
     private struct DrawingConstants {
-        static let cornerRadius: CGFloat = 10
-        static let lineWidth: CGFloat = 3
         static let fontScale: CGFloat = 0.65
         static let piePadding: CGFloat = 7
         static let pieOpacity: CGFloat = 0.5
@@ -89,5 +79,11 @@ struct ContentView_Previews: PreviewProvider {
         
         return EmojiMemoryGameView(game: game)
             .previewDevice("iPhone 12 mini")
+    }
+}
+
+extension View {
+    func cardify(isFaceUp: Bool) -> some View {
+        self.modifier(Cardify(isFaceUp: isFaceUp))
     }
 }
