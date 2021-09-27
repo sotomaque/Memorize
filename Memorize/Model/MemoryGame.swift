@@ -49,7 +49,7 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
     // returns index of provided card || nil
     func index(of card: Card) -> Int? {
         for index in 0..<cards.count {
-            if cards[index].id == card.id {
+            if cards[index] == card {
                 return index
             }
         }
@@ -57,7 +57,7 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
     }
     
     // Card Struct
-    struct Card: Identifiable {
+    struct Card: Identifiable, Equatable {
         var isFaceUp = false
         var isMatched = false
         let content: CardContent
