@@ -16,6 +16,12 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
         set { cards.indices.forEach {cards[$0].isFaceUp = ($0 == newValue)} }
     }
     
+    
+    mutating func shuffle() {
+        cards.shuffle()
+    }
+    
+    
     // on init: create an array of cards, iterate numberOfPairsOfCards times
     // and push 2 cards to array for each iteration
     init(numberOfPairsOfCards: Int, createCardContent: (Int) -> CardContent) {
@@ -26,6 +32,7 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
             cards.append(Card(content: content, id: pairIndex * 2))
             cards.append(Card(content: content, id: pairIndex * 2 + 1))
         }
+        cards.shuffle()
     }
     
     // game logic
@@ -45,7 +52,7 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
             }
         }
     }
-    
+
     // returns index of provided card || nil
     func index(of card: Card) -> Int? {
         for index in 0..<cards.count {
