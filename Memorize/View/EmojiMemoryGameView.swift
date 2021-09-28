@@ -52,7 +52,10 @@ struct CardView: View {
                     .padding(DrawingConstants.piePadding)
                     .opacity(DrawingConstants.pieOpacity)
                 Text(card.content)
-                    .font(font(in: geometry.size))
+                    .rotationEffect(Angle.degrees(card.isMatched ? 360 : 0))
+                    .animation(.linear(duration: 1).repeatForever(autoreverses: false))
+                    .font(.system(size: DrawingConstants.fontSize))
+                    .scaleEffect(scale(thatFits: geometry.size))
             }
             .cardify(isFaceUp: card.isFaceUp)
         })
@@ -63,9 +66,15 @@ struct CardView: View {
         Font.system(size: min(size.width, size.height) * DrawingConstants.fontScale)
     }
     
+    private func scale(thatFits size: CGSize) -> CGFloat {
+        min(size.width, size.height) / (DrawingConstants.fontSize / DrawingConstants.fontScale)
+    }
+ 
     // CONSTANTS
     private struct DrawingConstants {
-        static let fontScale: CGFloat = 0.65
+        static let fontScale: CGFloat = 0.7
+        static let fontSize: CGFloat = 32
+        
         static let piePadding: CGFloat = 7
         static let pieOpacity: CGFloat = 0.5
     }
